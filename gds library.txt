@@ -1,0 +1,35 @@
+
+Step1: Creating local memory graph
+
+CALL gds.graph.create.cypher(
+    'full_graph',
+    'MATCH (n) RETURN id(n) AS id',
+    'MATCH (n)-[e]-(m) RETURN id(n) AS source, e.weight AS weight, id(m) AS target'
+)
+
+Step2: Run Algo
+
+CALL gds.pageRank.stream('full_graph', {
+  maxIterations: 10,
+  dampingFactor: 0.85,
+  relationshipWeightProperty: 'weight'
+})
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).id AS id,gds.util.asNode(nodeId).name as name, score as full_pagerank
+ORDER BY full_pagerank DESC
+
+Step3: Write results back to database
+
+CALL gds.pageRank.write('full_graph', {
+    maxIterations: 10,
+    dampingFactor: 0.85,
+    relationshipWeightProperty: 'weight',
+    writeProperty: 'full_pagerank'})
+
+Step4: Searching with Sample Cypher Query 
+
+Q#1 MATCH (c:Director) RETURN c.name as Directors ORDER BY c.full_pagerank DESC
+Q#2 MATCH (c:Director) RETURN c.name as Directors, c.full_pagerank as Score ORDER BY c.full_pagerank DESC
+Q#3 MATCH (c:Person) RETURN c.name as Person, c.full_pagerank as Score ORDER BY c.full_pagerank DESC Limit 10
+
+
