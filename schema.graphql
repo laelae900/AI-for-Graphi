@@ -1,0 +1,1090 @@
+type Actor {
+  bio: String
+  born: Date
+  bornIn: String
+  died: Date
+  imdbIb: String
+  name: String
+  poster: String
+  tmdbId: String
+  url: String
+  full_pagerank: Float
+  acted_in(where: MovieWhere, options: MovieOptions): [Movie]
+}
+
+input ActorActed_inDeleteFieldInput {
+  where: MovieWhere
+  delete: MovieDeleteInput
+}
+
+input ActorActed_inFieldInput {
+  create: [MovieCreateInput!]
+  connect: [MovieConnectFieldInput!]
+}
+
+input ActorActed_inUpdateFieldInput {
+  where: MovieWhere
+  update: MovieUpdateInput
+  connect: [MovieConnectFieldInput!]
+  disconnect: [MovieDisconnectFieldInput!]
+  create: [MovieCreateInput!]
+  delete: [MovieDeleteFieldInput!]
+}
+
+input ActorConnectFieldInput {
+  where: ActorWhere
+  connect: ActorConnectInput
+}
+
+input ActorConnectInput {
+  acted_in: [MovieConnectFieldInput!]
+}
+
+input ActorCreateInput {
+  bio: String
+  born: Date
+  bornIn: String
+  died: Date
+  imdbIb: String
+  name: String
+  poster: String
+  tmdbId: String
+  url: String
+  full_pagerank: Float
+  acted_in: ActorActed_inFieldInput
+}
+
+input ActorDeleteFieldInput {
+  where: ActorWhere
+  delete: ActorDeleteInput
+}
+
+input ActorDeleteInput {
+  acted_in: [ActorActed_inDeleteFieldInput!]
+}
+
+input ActorDisconnectFieldInput {
+  where: ActorWhere
+  disconnect: ActorDisconnectInput
+}
+
+input ActorDisconnectInput {
+  acted_in: [MovieDisconnectFieldInput!]
+}
+
+input ActorOptions {
+  # Specify one or more ActorSort objects to sort Actors by. The sorts will be applied in the order in which they are arranged in the array.
+  sort: [ActorSort]
+  limit: Int
+  skip: Int
+}
+
+input ActorRelationInput {
+  acted_in: [MovieCreateInput!]
+}
+
+# Fields to sort Actors by. The order in which sorts are applied is not guaranteed when specifying many fields in one ActorSort object.
+input ActorSort {
+  bio: SortDirection
+  born: SortDirection
+  bornIn: SortDirection
+  died: SortDirection
+  imdbIb: SortDirection
+  name: SortDirection
+  poster: SortDirection
+  tmdbId: SortDirection
+  url: SortDirection
+  full_pagerank: SortDirection
+}
+
+input ActorUpdateInput {
+  bio: String
+  born: Date
+  bornIn: String
+  died: Date
+  imdbIb: String
+  name: String
+  poster: String
+  tmdbId: String
+  url: String
+  full_pagerank: Float
+  acted_in: [ActorActed_inUpdateFieldInput!]
+}
+
+input ActorWhere {
+  OR: [ActorWhere!]
+  AND: [ActorWhere!]
+  bio: String
+  bio_NOT: String
+  bio_IN: [String]
+  bio_NOT_IN: [String]
+  bio_CONTAINS: String
+  bio_NOT_CONTAINS: String
+  bio_STARTS_WITH: String
+  bio_NOT_STARTS_WITH: String
+  bio_ENDS_WITH: String
+  bio_NOT_ENDS_WITH: String
+  born: Date
+  born_NOT: Date
+  born_IN: [Date]
+  born_NOT_IN: [Date]
+  bornIn: String
+  bornIn_NOT: String
+  bornIn_IN: [String]
+  bornIn_NOT_IN: [String]
+  bornIn_CONTAINS: String
+  bornIn_NOT_CONTAINS: String
+  bornIn_STARTS_WITH: String
+  bornIn_NOT_STARTS_WITH: String
+  bornIn_ENDS_WITH: String
+  bornIn_NOT_ENDS_WITH: String
+  died: Date
+  died_NOT: Date
+  died_IN: [Date]
+  died_NOT_IN: [Date]
+  imdbIb: String
+  imdbIb_NOT: String
+  imdbIb_IN: [String]
+  imdbIb_NOT_IN: [String]
+  imdbIb_CONTAINS: String
+  imdbIb_NOT_CONTAINS: String
+  imdbIb_STARTS_WITH: String
+  imdbIb_NOT_STARTS_WITH: String
+  imdbIb_ENDS_WITH: String
+  imdbIb_NOT_ENDS_WITH: String
+  name: String
+  name_NOT: String
+  name_IN: [String]
+  name_NOT_IN: [String]
+  name_CONTAINS: String
+  name_NOT_CONTAINS: String
+  name_STARTS_WITH: String
+  name_NOT_STARTS_WITH: String
+  name_ENDS_WITH: String
+  name_NOT_ENDS_WITH: String
+  poster: String
+  poster_NOT: String
+  poster_IN: [String]
+  poster_NOT_IN: [String]
+  poster_CONTAINS: String
+  poster_NOT_CONTAINS: String
+  poster_STARTS_WITH: String
+  poster_NOT_STARTS_WITH: String
+  poster_ENDS_WITH: String
+  poster_NOT_ENDS_WITH: String
+  tmdbId: String
+  tmdbId_NOT: String
+  tmdbId_IN: [String]
+  tmdbId_NOT_IN: [String]
+  tmdbId_CONTAINS: String
+  tmdbId_NOT_CONTAINS: String
+  tmdbId_STARTS_WITH: String
+  tmdbId_NOT_STARTS_WITH: String
+  tmdbId_ENDS_WITH: String
+  tmdbId_NOT_ENDS_WITH: String
+  url: String
+  url_NOT: String
+  url_IN: [String]
+  url_NOT_IN: [String]
+  url_CONTAINS: String
+  url_NOT_CONTAINS: String
+  url_STARTS_WITH: String
+  url_NOT_STARTS_WITH: String
+  url_ENDS_WITH: String
+  url_NOT_ENDS_WITH: String
+  full_pagerank: Float
+  full_pagerank_NOT: Float
+  full_pagerank_IN: [Float]
+  full_pagerank_NOT_IN: [Float]
+  full_pagerank_LT: Float
+  full_pagerank_LTE: Float
+  full_pagerank_GT: Float
+  full_pagerank_GTE: Float
+  acted_in: MovieWhere
+  acted_in_NOT: MovieWhere
+}
+
+type CreateActorsMutationResponse {
+  actors: [Actor!]!
+}
+
+type CreateDirectorsMutationResponse {
+  directors: [Director!]!
+}
+
+type CreateGenresMutationResponse {
+  genres: [Genre!]!
+}
+
+type CreateMoviesMutationResponse {
+  movies: [Movie!]!
+}
+
+type CreateUsersMutationResponse {
+  users: [User!]!
+}
+
+scalar Date
+
+type DeleteInfo {
+  nodesDeleted: Int!
+  relationshipsDeleted: Int!
+}
+
+type Director {
+  bio: String
+  born: Date
+  bornIn: String
+  died: Date
+  imdbIb: String
+  name: String
+  poster: String
+  tmdbId: String
+  url: String
+  full_pagerank: Float
+  directed(where: MovieWhere, options: MovieOptions): [Movie]
+}
+
+input DirectorConnectFieldInput {
+  where: DirectorWhere
+  connect: DirectorConnectInput
+}
+
+input DirectorConnectInput {
+  directed: [MovieConnectFieldInput!]
+}
+
+input DirectorCreateInput {
+  bio: String
+  born: Date
+  bornIn: String
+  died: Date
+  imdbIb: String
+  name: String
+  poster: String
+  tmdbId: String
+  url: String
+  full_pagerank: Float
+  directed: DirectorDirectedFieldInput
+}
+
+input DirectorDeleteFieldInput {
+  where: DirectorWhere
+  delete: DirectorDeleteInput
+}
+
+input DirectorDeleteInput {
+  directed: [DirectorDirectedDeleteFieldInput!]
+}
+
+input DirectorDirectedDeleteFieldInput {
+  where: MovieWhere
+  delete: MovieDeleteInput
+}
+
+input DirectorDirectedFieldInput {
+  create: [MovieCreateInput!]
+  connect: [MovieConnectFieldInput!]
+}
+
+input DirectorDirectedUpdateFieldInput {
+  where: MovieWhere
+  update: MovieUpdateInput
+  connect: [MovieConnectFieldInput!]
+  disconnect: [MovieDisconnectFieldInput!]
+  create: [MovieCreateInput!]
+  delete: [MovieDeleteFieldInput!]
+}
+
+input DirectorDisconnectFieldInput {
+  where: DirectorWhere
+  disconnect: DirectorDisconnectInput
+}
+
+input DirectorDisconnectInput {
+  directed: [MovieDisconnectFieldInput!]
+}
+
+input DirectorOptions {
+  # Specify one or more DirectorSort objects to sort Directors by. The sorts will be applied in the order in which they are arranged in the array.
+  sort: [DirectorSort]
+  limit: Int
+  skip: Int
+}
+
+input DirectorRelationInput {
+  directed: [MovieCreateInput!]
+}
+
+# Fields to sort Directors by. The order in which sorts are applied is not guaranteed when specifying many fields in one DirectorSort object.
+input DirectorSort {
+  bio: SortDirection
+  born: SortDirection
+  bornIn: SortDirection
+  died: SortDirection
+  imdbIb: SortDirection
+  name: SortDirection
+  poster: SortDirection
+  tmdbId: SortDirection
+  url: SortDirection
+  full_pagerank: SortDirection
+}
+
+input DirectorUpdateInput {
+  bio: String
+  born: Date
+  bornIn: String
+  died: Date
+  imdbIb: String
+  name: String
+  poster: String
+  tmdbId: String
+  url: String
+  full_pagerank: Float
+  directed: [DirectorDirectedUpdateFieldInput!]
+}
+
+input DirectorWhere {
+  OR: [DirectorWhere!]
+  AND: [DirectorWhere!]
+  bio: String
+  bio_NOT: String
+  bio_IN: [String]
+  bio_NOT_IN: [String]
+  bio_CONTAINS: String
+  bio_NOT_CONTAINS: String
+  bio_STARTS_WITH: String
+  bio_NOT_STARTS_WITH: String
+  bio_ENDS_WITH: String
+  bio_NOT_ENDS_WITH: String
+  born: Date
+  born_NOT: Date
+  born_IN: [Date]
+  born_NOT_IN: [Date]
+  bornIn: String
+  bornIn_NOT: String
+  bornIn_IN: [String]
+  bornIn_NOT_IN: [String]
+  bornIn_CONTAINS: String
+  bornIn_NOT_CONTAINS: String
+  bornIn_STARTS_WITH: String
+  bornIn_NOT_STARTS_WITH: String
+  bornIn_ENDS_WITH: String
+  bornIn_NOT_ENDS_WITH: String
+  died: Date
+  died_NOT: Date
+  died_IN: [Date]
+  died_NOT_IN: [Date]
+  imdbIb: String
+  imdbIb_NOT: String
+  imdbIb_IN: [String]
+  imdbIb_NOT_IN: [String]
+  imdbIb_CONTAINS: String
+  imdbIb_NOT_CONTAINS: String
+  imdbIb_STARTS_WITH: String
+  imdbIb_NOT_STARTS_WITH: String
+  imdbIb_ENDS_WITH: String
+  imdbIb_NOT_ENDS_WITH: String
+  name: String
+  name_NOT: String
+  name_IN: [String]
+  name_NOT_IN: [String]
+  name_CONTAINS: String
+  name_NOT_CONTAINS: String
+  name_STARTS_WITH: String
+  name_NOT_STARTS_WITH: String
+  name_ENDS_WITH: String
+  name_NOT_ENDS_WITH: String
+  poster: String
+  poster_NOT: String
+  poster_IN: [String]
+  poster_NOT_IN: [String]
+  poster_CONTAINS: String
+  poster_NOT_CONTAINS: String
+  poster_STARTS_WITH: String
+  poster_NOT_STARTS_WITH: String
+  poster_ENDS_WITH: String
+  poster_NOT_ENDS_WITH: String
+  tmdbId: String
+  tmdbId_NOT: String
+  tmdbId_IN: [String]
+  tmdbId_NOT_IN: [String]
+  tmdbId_CONTAINS: String
+  tmdbId_NOT_CONTAINS: String
+  tmdbId_STARTS_WITH: String
+  tmdbId_NOT_STARTS_WITH: String
+  tmdbId_ENDS_WITH: String
+  tmdbId_NOT_ENDS_WITH: String
+  url: String
+  url_NOT: String
+  url_IN: [String]
+  url_NOT_IN: [String]
+  url_CONTAINS: String
+  url_NOT_CONTAINS: String
+  url_STARTS_WITH: String
+  url_NOT_STARTS_WITH: String
+  url_ENDS_WITH: String
+  url_NOT_ENDS_WITH: String
+  full_pagerank: Float
+  full_pagerank_NOT: Float
+  full_pagerank_IN: [Float]
+  full_pagerank_NOT_IN: [Float]
+  full_pagerank_LT: Float
+  full_pagerank_LTE: Float
+  full_pagerank_GT: Float
+  full_pagerank_GTE: Float
+  directed: MovieWhere
+  directed_NOT: MovieWhere
+}
+
+type Genre {
+  name: String
+  full_pagerank: Float
+  movies(where: MovieWhere, options: MovieOptions): [Movie]
+}
+
+input GenreConnectFieldInput {
+  where: GenreWhere
+  connect: GenreConnectInput
+}
+
+input GenreConnectInput {
+  movies: [MovieConnectFieldInput!]
+}
+
+input GenreCreateInput {
+  name: String
+  full_pagerank: Float
+  movies: GenreMoviesFieldInput
+}
+
+input GenreDeleteFieldInput {
+  where: GenreWhere
+  delete: GenreDeleteInput
+}
+
+input GenreDeleteInput {
+  movies: [GenreMoviesDeleteFieldInput!]
+}
+
+input GenreDisconnectFieldInput {
+  where: GenreWhere
+  disconnect: GenreDisconnectInput
+}
+
+input GenreDisconnectInput {
+  movies: [MovieDisconnectFieldInput!]
+}
+
+input GenreMoviesDeleteFieldInput {
+  where: MovieWhere
+  delete: MovieDeleteInput
+}
+
+input GenreMoviesFieldInput {
+  create: [MovieCreateInput!]
+  connect: [MovieConnectFieldInput!]
+}
+
+input GenreMoviesUpdateFieldInput {
+  where: MovieWhere
+  update: MovieUpdateInput
+  connect: [MovieConnectFieldInput!]
+  disconnect: [MovieDisconnectFieldInput!]
+  create: [MovieCreateInput!]
+  delete: [MovieDeleteFieldInput!]
+}
+
+input GenreOptions {
+  # Specify one or more GenreSort objects to sort Genres by. The sorts will be applied in the order in which they are arranged in the array.
+  sort: [GenreSort]
+  limit: Int
+  skip: Int
+}
+
+input GenreRelationInput {
+  movies: [MovieCreateInput!]
+}
+
+# Fields to sort Genres by. The order in which sorts are applied is not guaranteed when specifying many fields in one GenreSort object.
+input GenreSort {
+  name: SortDirection
+  full_pagerank: SortDirection
+}
+
+input GenreUpdateInput {
+  name: String
+  full_pagerank: Float
+  movies: [GenreMoviesUpdateFieldInput!]
+}
+
+input GenreWhere {
+  OR: [GenreWhere!]
+  AND: [GenreWhere!]
+  name: String
+  name_NOT: String
+  name_IN: [String]
+  name_NOT_IN: [String]
+  name_CONTAINS: String
+  name_NOT_CONTAINS: String
+  name_STARTS_WITH: String
+  name_NOT_STARTS_WITH: String
+  name_ENDS_WITH: String
+  name_NOT_ENDS_WITH: String
+  full_pagerank: Float
+  full_pagerank_NOT: Float
+  full_pagerank_IN: [Float]
+  full_pagerank_NOT_IN: [Float]
+  full_pagerank_LT: Float
+  full_pagerank_LTE: Float
+  full_pagerank_GT: Float
+  full_pagerank_GTE: Float
+  movies: MovieWhere
+  movies_NOT: MovieWhere
+}
+
+type Movie {
+  budget: Int
+  countries: [String]
+  imdbId: ID
+  imdbRating: Float
+  imdbVotes: Int
+  languages: [String]
+  movieId: ID!
+  plot: String
+  poster: String
+  released: String
+  revenue: Int
+  runtime: Int
+  title: String
+  tmdbId: String
+  url: String
+  year: Int
+  full_pagerank: Float
+  similar(first: Int = 3): [Movie]
+  genres(where: GenreWhere, options: GenreOptions): [Genre]
+  actors(where: ActorWhere, options: ActorOptions): [Actor]
+  directors(where: DirectorWhere, options: DirectorOptions): [Director]
+}
+
+input MovieActorsDeleteFieldInput {
+  where: ActorWhere
+  delete: ActorDeleteInput
+}
+
+input MovieActorsFieldInput {
+  create: [ActorCreateInput!]
+  connect: [ActorConnectFieldInput!]
+}
+
+input MovieActorsUpdateFieldInput {
+  where: ActorWhere
+  update: ActorUpdateInput
+  connect: [ActorConnectFieldInput!]
+  disconnect: [ActorDisconnectFieldInput!]
+  create: [ActorCreateInput!]
+  delete: [ActorDeleteFieldInput!]
+}
+
+input MovieConnectFieldInput {
+  where: MovieWhere
+  connect: MovieConnectInput
+}
+
+input MovieConnectInput {
+  genres: [GenreConnectFieldInput!]
+  actors: [ActorConnectFieldInput!]
+  directors: [DirectorConnectFieldInput!]
+}
+
+input MovieCreateInput {
+  budget: Int
+  countries: [String]
+  imdbId: ID
+  imdbRating: Float
+  imdbVotes: Int
+  languages: [String]
+  movieId: ID!
+  plot: String
+  poster: String
+  released: String
+  revenue: Int
+  runtime: Int
+  title: String
+  tmdbId: String
+  url: String
+  year: Int
+  full_pagerank: Float
+  genres: MovieGenresFieldInput
+  actors: MovieActorsFieldInput
+  directors: MovieDirectorsFieldInput
+}
+
+input MovieDeleteFieldInput {
+  where: MovieWhere
+  delete: MovieDeleteInput
+}
+
+input MovieDeleteInput {
+  genres: [MovieGenresDeleteFieldInput!]
+  actors: [MovieActorsDeleteFieldInput!]
+  directors: [MovieDirectorsDeleteFieldInput!]
+}
+
+input MovieDirectorsDeleteFieldInput {
+  where: DirectorWhere
+  delete: DirectorDeleteInput
+}
+
+input MovieDirectorsFieldInput {
+  create: [DirectorCreateInput!]
+  connect: [DirectorConnectFieldInput!]
+}
+
+input MovieDirectorsUpdateFieldInput {
+  where: DirectorWhere
+  update: DirectorUpdateInput
+  connect: [DirectorConnectFieldInput!]
+  disconnect: [DirectorDisconnectFieldInput!]
+  create: [DirectorCreateInput!]
+  delete: [DirectorDeleteFieldInput!]
+}
+
+input MovieDisconnectFieldInput {
+  where: MovieWhere
+  disconnect: MovieDisconnectInput
+}
+
+input MovieDisconnectInput {
+  genres: [GenreDisconnectFieldInput!]
+  actors: [ActorDisconnectFieldInput!]
+  directors: [DirectorDisconnectFieldInput!]
+}
+
+input MovieGenresDeleteFieldInput {
+  where: GenreWhere
+  delete: GenreDeleteInput
+}
+
+input MovieGenresFieldInput {
+  create: [GenreCreateInput!]
+  connect: [GenreConnectFieldInput!]
+}
+
+input MovieGenresUpdateFieldInput {
+  where: GenreWhere
+  update: GenreUpdateInput
+  connect: [GenreConnectFieldInput!]
+  disconnect: [GenreDisconnectFieldInput!]
+  create: [GenreCreateInput!]
+  delete: [GenreDeleteFieldInput!]
+}
+
+input MovieOptions {
+  # Specify one or more MovieSort objects to sort Movies by. The sorts will be applied in the order in which they are arranged in the array.
+  sort: [MovieSort]
+  limit: Int
+  skip: Int
+}
+
+input MovieRelationInput {
+  genres: [GenreCreateInput!]
+  actors: [ActorCreateInput!]
+  directors: [DirectorCreateInput!]
+}
+
+# Fields to sort Movies by. The order in which sorts are applied is not guaranteed when specifying many fields in one MovieSort object.
+input MovieSort {
+  budget: SortDirection
+  imdbId: SortDirection
+  imdbRating: SortDirection
+  imdbVotes: SortDirection
+  movieId: SortDirection
+  plot: SortDirection
+  poster: SortDirection
+  released: SortDirection
+  revenue: SortDirection
+  runtime: SortDirection
+  title: SortDirection
+  tmdbId: SortDirection
+  url: SortDirection
+  year: SortDirection
+  full_pagerank: SortDirection
+}
+
+input MovieUpdateInput {
+  budget: Int
+  countries: [String]
+  imdbId: ID
+  imdbRating: Float
+  imdbVotes: Int
+  languages: [String]
+  movieId: ID
+  plot: String
+  poster: String
+  released: String
+  revenue: Int
+  runtime: Int
+  title: String
+  tmdbId: String
+  url: String
+  year: Int
+  full_pagerank: Float
+  genres: [MovieGenresUpdateFieldInput!]
+  actors: [MovieActorsUpdateFieldInput!]
+  directors: [MovieDirectorsUpdateFieldInput!]
+}
+
+input MovieWhere {
+  OR: [MovieWhere!]
+  AND: [MovieWhere!]
+  budget: Int
+  budget_NOT: Int
+  budget_IN: [Int]
+  budget_NOT_IN: [Int]
+  budget_LT: Int
+  budget_LTE: Int
+  budget_GT: Int
+  budget_GTE: Int
+  countries: [String]
+  countries_NOT: [String]
+  countries_INCLUDES: String
+  countries_NOT_INCLUDES: String
+  imdbId: ID
+  imdbId_NOT: ID
+  imdbId_IN: [ID]
+  imdbId_NOT_IN: [ID]
+  imdbId_CONTAINS: ID
+  imdbId_NOT_CONTAINS: ID
+  imdbId_STARTS_WITH: ID
+  imdbId_NOT_STARTS_WITH: ID
+  imdbId_ENDS_WITH: ID
+  imdbId_NOT_ENDS_WITH: ID
+  imdbRating: Float
+  imdbRating_NOT: Float
+  imdbRating_IN: [Float]
+  imdbRating_NOT_IN: [Float]
+  imdbRating_LT: Float
+  imdbRating_LTE: Float
+  imdbRating_GT: Float
+  imdbRating_GTE: Float
+  imdbVotes: Int
+  imdbVotes_NOT: Int
+  imdbVotes_IN: [Int]
+  imdbVotes_NOT_IN: [Int]
+  imdbVotes_LT: Int
+  imdbVotes_LTE: Int
+  imdbVotes_GT: Int
+  imdbVotes_GTE: Int
+  languages: [String]
+  languages_NOT: [String]
+  languages_INCLUDES: String
+  languages_NOT_INCLUDES: String
+  movieId: ID
+  movieId_NOT: ID
+  movieId_IN: [ID]
+  movieId_NOT_IN: [ID]
+  movieId_CONTAINS: ID
+  movieId_NOT_CONTAINS: ID
+  movieId_STARTS_WITH: ID
+  movieId_NOT_STARTS_WITH: ID
+  movieId_ENDS_WITH: ID
+  movieId_NOT_ENDS_WITH: ID
+  plot: String
+  plot_NOT: String
+  plot_IN: [String]
+  plot_NOT_IN: [String]
+  plot_CONTAINS: String
+  plot_NOT_CONTAINS: String
+  plot_STARTS_WITH: String
+  plot_NOT_STARTS_WITH: String
+  plot_ENDS_WITH: String
+  plot_NOT_ENDS_WITH: String
+  poster: String
+  poster_NOT: String
+  poster_IN: [String]
+  poster_NOT_IN: [String]
+  poster_CONTAINS: String
+  poster_NOT_CONTAINS: String
+  poster_STARTS_WITH: String
+  poster_NOT_STARTS_WITH: String
+  poster_ENDS_WITH: String
+  poster_NOT_ENDS_WITH: String
+  released: String
+  released_NOT: String
+  released_IN: [String]
+  released_NOT_IN: [String]
+  released_CONTAINS: String
+  released_NOT_CONTAINS: String
+  released_STARTS_WITH: String
+  released_NOT_STARTS_WITH: String
+  released_ENDS_WITH: String
+  released_NOT_ENDS_WITH: String
+  revenue: Int
+  revenue_NOT: Int
+  revenue_IN: [Int]
+  revenue_NOT_IN: [Int]
+  revenue_LT: Int
+  revenue_LTE: Int
+  revenue_GT: Int
+  revenue_GTE: Int
+  runtime: Int
+  runtime_NOT: Int
+  runtime_IN: [Int]
+  runtime_NOT_IN: [Int]
+  runtime_LT: Int
+  runtime_LTE: Int
+  runtime_GT: Int
+  runtime_GTE: Int
+  title: String
+  title_NOT: String
+  title_IN: [String]
+  title_NOT_IN: [String]
+  title_CONTAINS: String
+  title_NOT_CONTAINS: String
+  title_STARTS_WITH: String
+  title_NOT_STARTS_WITH: String
+  title_ENDS_WITH: String
+  title_NOT_ENDS_WITH: String
+  tmdbId: String
+  tmdbId_NOT: String
+  tmdbId_IN: [String]
+  tmdbId_NOT_IN: [String]
+  tmdbId_CONTAINS: String
+  tmdbId_NOT_CONTAINS: String
+  tmdbId_STARTS_WITH: String
+  tmdbId_NOT_STARTS_WITH: String
+  tmdbId_ENDS_WITH: String
+  tmdbId_NOT_ENDS_WITH: String
+  url: String
+  url_NOT: String
+  url_IN: [String]
+  url_NOT_IN: [String]
+  url_CONTAINS: String
+  url_NOT_CONTAINS: String
+  url_STARTS_WITH: String
+  url_NOT_STARTS_WITH: String
+  url_ENDS_WITH: String
+  url_NOT_ENDS_WITH: String
+  year: Int
+  year_NOT: Int
+  year_IN: [Int]
+  year_NOT_IN: [Int]
+  year_LT: Int
+  year_LTE: Int
+  year_GT: Int
+  year_GTE: Int
+  full_pagerank: Float
+  full_pagerank_NOT: Float
+  full_pagerank_IN: [Float]
+  full_pagerank_NOT_IN: [Float]
+  full_pagerank_LT: Float
+  full_pagerank_LTE: Float
+  full_pagerank_GT: Float
+  full_pagerank_GTE: Float
+  genres: GenreWhere
+  genres_NOT: GenreWhere
+  actors: ActorWhere
+  actors_NOT: ActorWhere
+  directors: DirectorWhere
+  directors_NOT: DirectorWhere
+}
+
+type Mutation {
+  createMovies(input: [MovieCreateInput!]!): CreateMoviesMutationResponse!
+  deleteMovies(where: MovieWhere, delete: MovieDeleteInput): DeleteInfo!
+  updateMovies(
+    where: MovieWhere
+    update: MovieUpdateInput
+    connect: MovieConnectInput
+    disconnect: MovieDisconnectInput
+    create: MovieRelationInput
+    delete: MovieDeleteInput
+  ): UpdateMoviesMutationResponse!
+  createGenres(input: [GenreCreateInput!]!): CreateGenresMutationResponse!
+  deleteGenres(where: GenreWhere, delete: GenreDeleteInput): DeleteInfo!
+  updateGenres(
+    where: GenreWhere
+    update: GenreUpdateInput
+    connect: GenreConnectInput
+    disconnect: GenreDisconnectInput
+    create: GenreRelationInput
+    delete: GenreDeleteInput
+  ): UpdateGenresMutationResponse!
+  createUsers(input: [UserCreateInput!]!): CreateUsersMutationResponse!
+  deleteUsers(where: UserWhere, delete: UserDeleteInput): DeleteInfo!
+  updateUsers(
+    where: UserWhere
+    update: UserUpdateInput
+    connect: UserConnectInput
+    disconnect: UserDisconnectInput
+    create: UserRelationInput
+    delete: UserDeleteInput
+  ): UpdateUsersMutationResponse!
+  createActors(input: [ActorCreateInput!]!): CreateActorsMutationResponse!
+  deleteActors(where: ActorWhere, delete: ActorDeleteInput): DeleteInfo!
+  updateActors(
+    where: ActorWhere
+    update: ActorUpdateInput
+    connect: ActorConnectInput
+    disconnect: ActorDisconnectInput
+    create: ActorRelationInput
+    delete: ActorDeleteInput
+  ): UpdateActorsMutationResponse!
+  createDirectors(
+    input: [DirectorCreateInput!]!
+  ): CreateDirectorsMutationResponse!
+  deleteDirectors(
+    where: DirectorWhere
+    delete: DirectorDeleteInput
+  ): DeleteInfo!
+  updateDirectors(
+    where: DirectorWhere
+    update: DirectorUpdateInput
+    connect: DirectorConnectInput
+    disconnect: DirectorDisconnectInput
+    create: DirectorRelationInput
+    delete: DirectorDeleteInput
+  ): UpdateDirectorsMutationResponse!
+}
+
+type Query {
+  movies(where: MovieWhere, options: MovieOptions): [Movie]!
+  genres(where: GenreWhere, options: GenreOptions): [Genre]!
+  users(where: UserWhere, options: UserOptions): [User]!
+  actors(where: ActorWhere, options: ActorOptions): [Actor]!
+  directors(where: DirectorWhere, options: DirectorOptions): [Director]!
+}
+
+enum SortDirection {
+  # Sort by field values in ascending order.
+  ASC
+
+  # Sort by field values in descending order.
+  DESC
+}
+
+type UpdateActorsMutationResponse {
+  actors: [Actor!]!
+}
+
+type UpdateDirectorsMutationResponse {
+  directors: [Director!]!
+}
+
+type UpdateGenresMutationResponse {
+  genres: [Genre!]!
+}
+
+type UpdateMoviesMutationResponse {
+  movies: [Movie!]!
+}
+
+type UpdateUsersMutationResponse {
+  users: [User!]!
+}
+
+type User {
+  userId: ID!
+  name: String
+  full_pagerank: Float
+  rated(where: MovieWhere, options: MovieOptions): [Movie]
+}
+
+input UserConnectInput {
+  rated: [MovieConnectFieldInput!]
+}
+
+input UserCreateInput {
+  userId: ID!
+  name: String
+  full_pagerank: Float
+  rated: UserRatedFieldInput
+}
+
+input UserDeleteInput {
+  rated: [UserRatedDeleteFieldInput!]
+}
+
+input UserDisconnectInput {
+  rated: [MovieDisconnectFieldInput!]
+}
+
+input UserOptions {
+  # Specify one or more UserSort objects to sort Users by. The sorts will be applied in the order in which they are arranged in the array.
+  sort: [UserSort]
+  limit: Int
+  skip: Int
+}
+
+input UserRatedDeleteFieldInput {
+  where: MovieWhere
+  delete: MovieDeleteInput
+}
+
+input UserRatedFieldInput {
+  create: [MovieCreateInput!]
+  connect: [MovieConnectFieldInput!]
+}
+
+input UserRatedUpdateFieldInput {
+  where: MovieWhere
+  update: MovieUpdateInput
+  connect: [MovieConnectFieldInput!]
+  disconnect: [MovieDisconnectFieldInput!]
+  create: [MovieCreateInput!]
+  delete: [MovieDeleteFieldInput!]
+}
+
+input UserRelationInput {
+  rated: [MovieCreateInput!]
+}
+
+# Fields to sort Users by. The order in which sorts are applied is not guaranteed when specifying many fields in one UserSort object.
+input UserSort {
+  userId: SortDirection
+  name: SortDirection
+  full_pagerank: SortDirection
+}
+
+input UserUpdateInput {
+  userId: ID
+  name: String
+  full_pagerank: Float
+  rated: [UserRatedUpdateFieldInput!]
+}
+
+input UserWhere {
+  OR: [UserWhere!]
+  AND: [UserWhere!]
+  userId: ID
+  userId_NOT: ID
+  userId_IN: [ID]
+  userId_NOT_IN: [ID]
+  userId_CONTAINS: ID
+  userId_NOT_CONTAINS: ID
+  userId_STARTS_WITH: ID
+  userId_NOT_STARTS_WITH: ID
+  userId_ENDS_WITH: ID
+  userId_NOT_ENDS_WITH: ID
+  name: String
+  name_NOT: String
+  name_IN: [String]
+  name_NOT_IN: [String]
+  name_CONTAINS: String
+  name_NOT_CONTAINS: String
+  name_STARTS_WITH: String
+  name_NOT_STARTS_WITH: String
+  name_ENDS_WITH: String
+  name_NOT_ENDS_WITH: String
+  full_pagerank: Float
+  full_pagerank_NOT: Float
+  full_pagerank_IN: [Float]
+  full_pagerank_NOT_IN: [Float]
+  full_pagerank_LT: Float
+  full_pagerank_LTE: Float
+  full_pagerank_GT: Float
+  full_pagerank_GTE: Float
+  rated: MovieWhere
+  rated_NOT: MovieWhere
+}
